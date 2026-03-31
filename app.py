@@ -25,7 +25,7 @@ model_path = 'models'
 def load_models():
     try:
         audio_model = joblib.load(f"{model_path}/audio_model.pkl")
-        video_model = load_model(f"{model_path}/video_model.keras")
+        video_model = load_model(f"{model_path}/video_model.h5")
         audio_encoder = joblib.load(f"{model_path}/audio_encoder.pkl")
         video_encoder = joblib.load(f"{model_path}/video_encoder.pkl")
 
