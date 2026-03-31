@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 import tempfile
+import traceback
 from moviepy.editor import VideoFileClip
 from tensorflow.keras.models import load_model
 from functions import extract_feature, extract_frame
@@ -21,12 +22,19 @@ model_path = 'models'
 
 @st.cache_resource
 def load_models():
-    audio_model = joblib.load(f"{model_path}/audio_model.pkl")
-    video_model = load_model(f"{model_path}/video_model.keras")
-    audio_encoder = joblib.load(f"{model_path}/audio_encoder.pkl")
-    video_encoder = joblib.load(f"{model_path}/video_encoder.pkl")
-    
-    return audio_model, video_model, audio_encoder, video_encoder
+    try:
+        audio_model = joblib.load(f"{model_path}/audio_model.pkl")
+        video_model = load_model(f"{model_path}/video_model.keras")
+        audio_encoder = joblib.load(f"{model_path}/audio_encoder.pkl")
+        video_encoder = joblib.load(f"{model_path}/video_encoder.pkl")
+
+        return audio_model, video_model, audio_encoder, video_encoder
+
+    except Exception as e:
+        import traceback
+        st.error("FULL ERROR BELOW 👇")
+        st.code(traceback.format_exc())   # 👈 THIS WILL EXPOSE THE MODULE NAME
+        raise e
 
 audio_model, video_model, audio_encoder, video_encoder = load_models()
 
