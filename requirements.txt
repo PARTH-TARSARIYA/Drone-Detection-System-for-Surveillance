@@ -1,9 +1,10 @@
 pandas
 numpy
-moviepy
 streamlit
 joblib
 tensorflow
 scikit-learn
 opencv-python-headless
 librosa
+moviepy==1.0.3
+imageio-ffmpeg
