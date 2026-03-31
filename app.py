@@ -7,6 +7,8 @@ from moviepy.editor import VideoFileClip
 from tensorflow.keras.models import load_model
 from functions import extract_feature, extract_frame
 
+import os
+os.system('python -m pip install --upgrade pip')   
 # ---------------- UI CONFIG ----------------
 st.set_page_config(page_title="Drone Detection System", layout="wide")
 
