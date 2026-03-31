@@ -23,17 +23,12 @@ model_path = 'models'
 
 @st.cache_resource
 def load_models():
-    try:
-        audio_model = joblib.load(f"{model_path}/audio_model.pkl")
-        video_model = load_model(f"{models_path}/video_model.keras")
-        audio_encoder = joblib.load(f"{models_path}/audio_encoder.pkl")
-        video_encoder = joblib.load(f"{models_path}/video_encoder.pkl")
-        return audio_model, video_model, audio_encoder, video_encoder
-
-    except Exception as e:
-        st.text("FULL ERROR:")
-        st.text(traceback.format_exc())  # 👈 THIS IS KEY
-        raise e
+    audio_model = joblib.load(f"{model_path}/audio_model.pkl")
+    video_model = load_model(f"{model_path}/video_model.keras")
+    audio_encoder = joblib.load(f"{model_path}/audio_encoder.pkl")
+    video_encoder = joblib.load(f"{model_path}/video_encoder.pkl")
+    
+    return audio_model, video_model, audio_encoder, video_encoder
 
 audio_model, video_model, audio_encoder, video_encoder = load_models()
 
