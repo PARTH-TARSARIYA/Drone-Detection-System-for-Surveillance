@@ -1,0 +1,9 @@
+pandas
+numpy
+moviepy
+streamlit
+joblib
+tensorflow
+scikit-learn
+opencv-python-headless
+librosa
