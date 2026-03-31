@@ -2,8 +2,6 @@ import streamlit as st
 import joblib
 import numpy as np
 import tempfile
-import traceback
-import os
 from moviepy.editor import VideoFileClip
 from tensorflow.keras.models import load_model
 from functions import extract_feature, extract_frame
