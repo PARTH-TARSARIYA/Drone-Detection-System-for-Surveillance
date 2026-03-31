@@ -172,9 +172,27 @@ The model performs well on both training data and real-world test samples.
 
 ## 📚 References
 
-* Drone Dataset: https://github.com/DroneDetectionThesis/Drone-detection-dataset
 * Pixabay: https://pixabay.com/
 * Pexels: https://www.pexels.com/
+
+This project uses the Drone Detection Dataset provided by:
+
+Svanström, F., Alonso-Fernandez, F., & Englund, C. (2021).  
+*A Dataset for Multi-Sensor Drone Detection*.  
+Data in Brief, 39, 107521.  
+https://doi.org/10.1016/j.dib.2021.107521  
+
+Additional related works:
+
+- Svanström, F. (2020). *Drone Detection and Classification using Machine Learning and Sensor Fusion* (Master’s Thesis)
+
+- Svanström, F., Englund, C., & Alonso-Fernandez, F. (2021).  
+  *Real-Time Drone Detection and Tracking With Visible, Thermal and Acoustic Sensors*  
+  Proceedings of ICPR 2020  
+  https://doi.org/10.1109/ICPR48806.2021.9413241  
+
+Dataset Source:  
+https://github.com/DroneDetectionThesis/Drone-detection-dataset
 
 ---
 
