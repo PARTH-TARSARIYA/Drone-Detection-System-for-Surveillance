@@ -20,10 +20,10 @@ st.markdown("""
 # ---------------- LOAD MODELS ----------------
 @st.cache_resource
 def load_models():
-    audio_model = joblib.load("audio_model.pkl")
-    video_model = load_model("video_model.keras")
-    audio_encoder = joblib.load('audio_encoder.pkl')
-    video_encoder = joblib.load('video_encoder.pkl')
+    audio_model = joblib.load(f"{models}/audio_model.pkl")
+    video_model = load_model(f"{models}/video_model.keras")
+    audio_encoder = joblib.load(f"{models}/audio_encoder.pkl")
+    video_encoder = joblib.load(f"{models}/video_encoder.pkl")
     return audio_model, video_model, audio_encoder, video_encoder
 
 audio_model, video_model, audio_encoder, video_encoder = load_models()
