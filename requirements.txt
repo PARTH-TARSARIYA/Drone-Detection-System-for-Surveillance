@@ -4,6 +4,6 @@ tensorflow-cpu==2.13.0
 opencv-python-headless==4.8.1.78
 librosa==0.10.0
 moviepy==1.0.3
-numpy==2.0.2
+numpy==2.4.3
 joblib==1.5.3
-scikit-learn==1.6.1
+scikit-learn==1.8.0
