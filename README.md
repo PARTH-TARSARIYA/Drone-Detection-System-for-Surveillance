@@ -45,7 +45,7 @@ This project uses a combination of publicly available datasets and additional me
 ### 1. Primary Dataset
 
 * Source: https://github.com/DroneDetectionThesis/Drone-detection-dataset
-* Description: Contains labeled drone and non-drone video/image data used for initial training.
+* Description: Contains labeled drone and non-drone video data used for initial training.
 
 ### 2. Additional Data (Custom Collection)
 
@@ -88,7 +88,7 @@ drone-detection/
 1. Clone the repository:
 
 ```
-git clone https://github.com/your-username/drone-detection.git
+git clone https://github.com/PARTH-TARSARIYA/drone-detection.git
 ```
 
 2. Navigate to the project directory:
