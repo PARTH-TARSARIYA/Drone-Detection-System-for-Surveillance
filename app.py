@@ -8,7 +8,7 @@ from moviepy.editor import VideoFileClip
 from tensorflow.keras.models import load_model
 from functions import extract_feature, extract_frame
 
-# ---------------- UI CONFIG ----------------
+# UI CONFIG
 st.set_page_config(page_title="Drone Detection System", layout="wide")
 
 st.markdown("""
@@ -18,7 +18,7 @@ st.markdown("""
     </p>
 """, unsafe_allow_html=True)
 
-# ---------------- LOAD MODELS ----------------
+# LOAD MODELS
 model_path = 'models'
 
 @st.cache_resource
@@ -32,13 +32,13 @@ def load_models():
 
 audio_model, video_model, audio_encoder, video_encoder = load_models()
 
-# ---------------- SETTINGS ----------------
+# set Threshold
 THRESHOLD = 0.30
 
-# ---------------- FILE UPLOAD ----------------
+# FILE UPLOAD
 uploaded_video = st.file_uploader("📤 Upload Video", type=["mp4", "avi", "mov"])
 
-# ---------------- PROCESS ----------------
+# PROCESS
 if uploaded_video is not None:
 
     # Create temp video file safely
@@ -61,7 +61,7 @@ if uploaded_video is not None:
             # Load video
             video_clip = VideoFileClip(video_path)
 
-            # ---------------- VIDEO ----------------
+            # Video precessing and predicting
             video_frames = extract_frame(video_path)
             video_frames = np.expand_dims(video_frames, axis=0)
 
@@ -70,7 +70,7 @@ if uploaded_video is not None:
             video_conf = float(np.max(video_probs))
             video_prediction = video_encoder.inverse_transform([video_class])[0]
 
-            # ---------------- AUDIO ----------------
+            # Audio Processing and predicting
             audio_conf = None
             audio_prediction = None
 
@@ -94,7 +94,7 @@ if uploaded_video is not None:
                 if os.path.exists(audio_path):
                     os.remove(audio_path)
 
-                # ---------------- FUSION ----------------
+                # Fusion
                 if video_prediction == audio_prediction:
                     final_result = video_prediction
                     final_confidence = (audio_conf + video_conf) / 2
@@ -110,7 +110,7 @@ if uploaded_video is not None:
                 final_result = video_prediction
                 final_confidence = video_conf
 
-            # ---------------- THRESHOLD LOGIC ----------------
+            # THRESHOLD LOGIC
             if float(final_confidence) < THRESHOLD:
                 final_result = "Threat" if final_result == "Non-Threat" else "Non-Threat"
                 final_confidence = 1 - final_confidence
@@ -122,7 +122,6 @@ if uploaded_video is not None:
             st.stop()
 
         finally:
-            # 🔥 VERY IMPORTANT (fix WinError 32)
             if video_clip is not None:
                 video_clip.close()
                 del video_clip
@@ -133,7 +132,7 @@ if uploaded_video is not None:
                 except:
                     pass
 
-    # ---------------- RESULT UI ----------------
+    # RESULT UI
     st.subheader("📊 Detection Result")
 
     if final_result == "Threat":
